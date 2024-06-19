@@ -3,12 +3,10 @@ export default defineNuxtConfig({
   // Nuxt 4 directory structure and features
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
+  css: ['../assets/css/reset.css'],
   // Nuxt Modules
   // https://nuxt.com/modules
-  modules: [
-    '@nuxthub/core',
-    '@nuxt/eslint'
-  ],
+  modules: ['@nuxthub/core', '@nuxt/eslint', 'nuxt-swiper'],
   hub: {
     database: true,
     kv: true,
@@ -21,6 +19,17 @@ export default defineNuxtConfig({
       openAPI: true
     }
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "../assets/_colors.scss" as *;'
+        }
+      }
+    }
+  },
+
+
   // Development
   devtools: { enabled: true },
 })
